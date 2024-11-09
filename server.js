@@ -23,8 +23,8 @@ app.post('/' , (req,res) => {
       port: 465,
       secure: true, // true for port 465, false for other ports
       auth: {
-        user: "beridzegigi19@gmail.com",
-        pass: "cdcs xqtm mqsu qktj",
+        user: "Info@mobielebandencentrale.be",
+        pass: "zdyt xzdw lyqm kvpr",
       },
     });
     
@@ -85,9 +85,8 @@ app.post('/' , (req,res) => {
   
             ${desc ? `<p>Bericht: ${desc}</p>` : ''}
             ${Stockage ? Stockage == 1 ?`<p>BANDEN STOCKAGE:1 SEIZOEN </p>` : `<p>BANDEN STOCKAGE:4 SEIZOEN </p>`  : ''}
-            ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : null}</p>` : ''}
+            ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : ''} ${region == "OostVla" ? "OOST-VLAANDEREN" : ''} ${region == "Antwerpen" ? "ANTWERPEN" : ''}</p>` : ''}
 
-            
             
             
             
