@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const router = express.Router()
 
-const cors = require('cors')
 
+const cors = require('cors')
+ //"user: Info@mobielebandencentrale.be pass: zdyt xzdw lyqm kvpr,"
 app.use(cors({
     origin:'*'
 }))
@@ -12,20 +13,28 @@ app.use(express.json())
 app.post('/' , (req,res) => {
     console.log("start Working")
 
-    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand} = req.body
+
+    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 } = req.body
     const nodemailer = require("nodemailer");
+    console.log(lat2)
 
 
     const locationurl = `http://localhost:3000/map/${lat}/${lng}`
+    const locationurl2 = `http://localhost:3000/map/${lat2}/${lng2}`
+    
 
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
       secure: true, // true for port 465, false for other ports
       auth: {
-        user: "Info@mobielebandencentrale.be",
-        pass: "zdyt xzdw lyqm kvpr",
+        user: "beridzegigi19@gmail.com",
+        pass: "cdcs xqtm mqsu qktj",
       },
+      tls: {
+          rejectUnauthorized: false, // Ignore self-signed certificate error
+        },
+
     });
     
     // async..await is not allowed in global scope, must use a wrapper
@@ -33,7 +42,7 @@ app.post('/' , (req,res) => {
       // send mail with defined transport object
       const info = await transporter.sendMail({
         from: '"Mobiele Bandencentrale" <maddison53@ethereal.email>', // sender address
-        to: `Info@mobielebandencentrale.be`, // list of receivers
+        to: `beridzegigi19@gmail.com`, // list of receivers
         subject: "Service ✔", // Subject line
         text: "Hello world?", // plain text body
         html:  `<html>
@@ -89,8 +98,15 @@ app.post('/' , (req,res) => {
 
             
             
+
+            ${lat2 ? '' : `<p><a href=${locationurl} class="button">Location</a></p>`}
             
-             ${lat ? `<p><a href=${locationurl} class="button">Location</a></p>` : ''}
+            ${lat2 ? `<p><a href=${locationurl2} class="button">Afzet Location</a></p>` : '' }
+
+            ${lat2 ? `<p><a href=${locationurl} class="button">Ophaal Location</a></p>` : '' }
+            
+
+
 
           </div>
         </body>
