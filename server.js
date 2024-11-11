@@ -19,8 +19,8 @@ app.post('/' , (req,res) => {
 
 
 
-    const locationurl = `https://react-bug-fix-project.vercel.app/map/${lat}/${lng}`
-    const locationurl2 = `https://react-bug-fix-project.vercel.app/map/${lat2}/${lng2}`
+    const locationurl = `https://www.plattebandauto.be/map/${lat}/${lng}`
+    const locationurl2 = `https://www.plattebandauto.be/map/${lat2}/${lng2}`
     
 
     const transporter = nodemailer.createTransport({
