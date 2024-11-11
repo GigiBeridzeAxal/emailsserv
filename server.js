@@ -11,16 +11,16 @@ app.use(cors({
 app.use(express.json())
 
 app.post('/' , (req,res) => {
-    ("start Working")
+
 
 
     const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 } = req.body
     const nodemailer = require("nodemailer");
-    (lat2)
 
 
-    const locationurl = `https://react-bug-fix-project.vercel.app/map/${lat}/${lng}`
-    const locationurl2 = `https://react-bug-fix-project.vercel.app/map/${lat2}/${lng2}`
+
+    const locationurl = `http://localhost:3000/map/${lat}/${lng}`
+    const locationurl2 = `http://localhost:3000/map/${lat2}/${lng2}`
     
 
     const transporter = nodemailer.createTransport({
@@ -42,7 +42,7 @@ app.post('/' , (req,res) => {
       // send mail with defined transport object
       const info = await transporter.sendMail({
         from: '"Mobiele Bandencentrale" <maddison53@ethereal.email>', // sender address
-        to: `Info@mobielebandencentrale.be`, // list of receivers
+        to: `beridzegigi19@gmail.com`, // list of receivers
         subject: "Service ✔", // Subject line
         text: "Hello world?", // plain text body
         html:  `<html>
@@ -113,7 +113,7 @@ app.post('/' , (req,res) => {
       </html>`, // html body
       });
     
-      ("Message sent: %s", info.messageId);
+      ("Message sent: %s", console.log(info.messageId) );
       // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
     }
     
@@ -121,4 +121,4 @@ app.post('/' , (req,res) => {
 })
 
 
-app.listen(4000 , ("Server Launched"))
+app.listen(4000 , console.log("Server Launched"))
