@@ -42,7 +42,7 @@ app.post('/' , (req,res) => {
       // send mail with defined transport object
       const info = await transporter.sendMail({
         from: '"Mobiele Bandencentrale" <maddison53@ethereal.email>', // sender address
-        to: `Info@mobielebandencentrale.be`, // list of receivers
+        to: `rolseq@gmail.com`, // list of receivers
         subject: "Service ✔", // Subject line
         text: "Hello world?", // plain text body
         html:  `<html>
