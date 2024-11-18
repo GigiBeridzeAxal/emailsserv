@@ -14,7 +14,7 @@ app.post('/' , (req,res) => {
 
 
 
-    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet } = req.body
+    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet , from , to, date } = req.body
     const nodemailer = require("nodemailer");
 
 
@@ -95,7 +95,8 @@ app.post('/' , (req,res) => {
             ${desc ? `<p>Bericht: ${desc}</p>` : ''}
             ${Stockage ? Stockage == 1 ?`<p>BANDEN STOCKAGE:1 SEIZOEN </p>` : `<p>BANDEN STOCKAGE:4 SEIZOEN </p>`  : ''}
             ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : ''} ${region == "OostVla" ? "OOST-VLAANDEREN" : ''} ${region == "Antwerpen" ? "ANTWERPEN" : ''}</p>` : ''}
-
+            
+            ${date ? `<p> Montagetijd : ${date} From:${from} To:${to}</p>` : ''}
             
             
 
