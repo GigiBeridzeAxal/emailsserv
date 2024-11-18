@@ -19,8 +19,8 @@ app.post('/' , (req,res) => {
 
 
 
-    const locationurl = `https://www.plattebandauto.be/map/${lat}/${lng}`
-    const locationurl2 = `https://www.plattebandauto.be/map/${lat2}/${lng2}`
+    const locationurl = `https://maps.google.com/?q=${lat},${lng}`
+    const locationurl2 = `https://maps.google.com/?q=${lat2},${lng2}`
     
 
     const transporter = nodemailer.createTransport({
