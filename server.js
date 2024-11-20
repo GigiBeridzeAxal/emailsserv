@@ -14,7 +14,7 @@ app.post('/' , (req,res) => {
 
 
 
-    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet , chooser , tiresize , tiresize2 , tiresize3 , tiresize4 , tiresize5 , from1 , to1, date1 , from2 , to2, date2 , from3 , to3, date3 } = req.body
+    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet , chooser , tiresize , tiresize2 , tiresize3 , tiresize4 , tiresize5 , from1 , to1, date1 , from2 , to2, date2 , from3 , to3, date3 , locaties } = req.body
     const nodemailer = require("nodemailer");
 
 
@@ -42,7 +42,7 @@ app.post('/' , (req,res) => {
       // send mail with defined transport object
       const info = await transporter.sendMail({
         from: '"Mobiele Bandencentrale" <maddison53@ethereal.email>', // sender address
-        to: `Info@mobielebandencentrale.be`, // list of receivers
+        to: `beridzegigi19@gmail.com`, // list of receivers
         subject: "Service ✔", // Subject line
         text: "Hello world?", // plain text body
         html:  `<html>
@@ -104,13 +104,14 @@ app.post('/' , (req,res) => {
             ${desc ? `<p>Bericht: ${desc}</p>` : ''}
             ${Stockage ? Stockage == 1 ?`<p>BANDEN STOCKAGE:1 SEIZOEN </p>` : `<p>BANDEN STOCKAGE:4 SEIZOEN </p>`  : ''}
             ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : ''} ${region == "OostVla" ? "OOST-VLAANDEREN" : ''} ${region == "Antwerpen" ? "ANTWERPEN" : ''}</p>` : ''}
-            
+            ${locaties ? `<p>Locatie:${locaties}</p>` : ''}
             ${date1 ? `<p> Montagetijd : ${date1} From:${from1} To:${to1}</p>` : ''}
             ${date2 ? `<p> Montagetijd2 : ${date2} From:${from2} To:${to2}</p>` : ''}
             ${date3 ? `<p> Montagetijd3 : ${date3} From:${from3} To:${to3}</p>` : ''}     
 
             ${tiresize ? `<div class="Bandemat" >Bandenmaat:<div>${tiresize}</div><div>${tiresize2}</div><div>${tiresize3}</div><div>${tiresize4}</div><div>${tiresize5}</div> </div>` : ''}
-            ${chooser == 'velvebroken' ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `<p> KIES INDIEN VAN TOEPASSING:Zichtbare schade<p>` }
+            ${chooser ?  chooser == 'velvebroken' ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `<p> KIES INDIEN VAN TOEPASSING:Zichtbare schade<p>` : ''}
+          
             ${lat2 ? '' : `<p><a href=${locationurl} class="button">Location</a></p>`}
 
             ${lat2 ? `<p><a href=${locationurl2} class="button">Afzet Location</a></p>` : '' }
