@@ -14,7 +14,7 @@ app.post('/' , (req,res) => {
 
 
 
-    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet , chooser , tiresize , tiresize2 , tiresize3 , tiresize4 , tiresize5 , from1 , to1, date1 , from2 , to2, date2 , from3 , to3, date3 , locaties } = req.body
+    const {email , number , desc , lat , lng , Stockage , price , Aanvraag , region , TypeBand , lat2 , lng2 , afzet , chooser , tiresize , tiresize2 , tiresize3 , tiresize4 , tiresize5 , from1 , to1, date1 , from2 , to2, date2 , from3 , to3, date3 , locaties , ophal , bandenmerk } = req.body
     const nodemailer = require("nodemailer");
 
 
@@ -100,7 +100,8 @@ app.post('/' , (req,res) => {
             ${Aanvraag ? `<p>Aanvrag Type: ${Aanvraag}</p>` : ''}
             ${TypeBand ? `<p>TypeBand: ${TypeBand}</p>` : ''}
             ${price ? `<p>Prijs: ${price} €</p>` : ''}
-             ${afzet ? `Afzet Locatioe: ${afzet}` : ''}
+             ${afzet ? `<p>Afzet Locatioe: ${afzet}</p>` : ''}
+            ${ophal ? `<p>Ophaal Locatioe: ${ophal}</p> ` : ''}
             ${desc ? `<p>Bericht: ${desc}</p>` : ''}
             ${Stockage ? Stockage == 1 ?`<p>BANDEN STOCKAGE:1 SEIZOEN </p>` : `<p>BANDEN STOCKAGE:4 SEIZOEN </p>`  : ''}
             ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : ''} ${region == "OostVla" ? "OOST-VLAANDEREN" : ''} ${region == "Antwerpen" ? "ANTWERPEN" : ''}</p>` : ''}
@@ -108,15 +109,11 @@ app.post('/' , (req,res) => {
             ${date1 ? `<p> Montagetijd : ${date1} From:${from1} To:${to1}</p>` : ''}
             ${date2 ? `<p> Montagetijd2 : ${date2} From:${from2} To:${to2}</p>` : ''}
             ${date3 ? `<p> Montagetijd3 : ${date3} From:${from3} To:${to3}</p>` : ''}     
-
+            ${bandenmerk ? `<p>Bandenmerk:${bandenmerk}</p>` : '' }
             ${tiresize ? `<div class="Bandemat" >Bandenmaat:<div>${tiresize}</div><div>${tiresize2}</div><div>${tiresize3}</div><div>${tiresize4}</div><div>${tiresize5}</div> </div>` : ''}
-            ${chooser ?  chooser == 'velvebroken' ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `<p> KIES INDIEN VAN TOEPASSING:Zichtbare schade<p>` : ''}
-          
-            ${lat2 ? '' : `<p><a href=${locationurl} class="button">Location</a></p>`}
-
-            ${lat2 ? `<p><a href=${locationurl2} class="button">Afzet Location</a></p>` : '' }
-
-            ${lat2 ? `<p><a href=${locationurl} class="button">Ophaal Location</a></p>` : '' }
+             ${chooser == "velvebroken" ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `${chooser == "MEERDERE" ? " KIES INDIEN VAN TOEPASSING:MEERDERE LEKKE BANDEN" :`${chooser == "visiOrDroveFlat" ? " KIES INDIEN VAN TOEPASSING:Ventiel afgebroken" :'' }`}`}
+            
+            ${lat ? `<p><a href=${locationurl} class="button">Location</a></p>` : ''}
             
 
 
