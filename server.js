@@ -106,12 +106,13 @@ app.post('/' , (req,res) => {
             ${Stockage ? Stockage == 1 ?`<p>BANDEN STOCKAGE:1 SEIZOEN </p>` : `<p>BANDEN STOCKAGE:4 SEIZOEN </p>`  : ''}
             ${region ?`<p>Region: ${region == "WestVla" ? "west-vlaanderen" : ''} ${region == "OostVla" ? "OOST-VLAANDEREN" : ''} ${region == "Antwerpen" ? "ANTWERPEN" : ''}</p>` : ''}
             ${locaties ? `<p>Locatie:${locaties}</p>` : ''}
-            ${date1 ? `<p> Montagetijd : ${date1} From:${from1} To:${to1}</p>` : ''}
-            ${date2 ? `<p> Montagetijd2 : ${date2} From:${from2} To:${to2}</p>` : ''}
-            ${date3 ? `<p> Montagetijd3 : ${date3} From:${from3} To:${to3}</p>` : ''}     
+            ${date1 ? `<p> Montagetijd : ${date1} ${from1 !== undefined ?` From:${from1} To:${to1}` : `` } </p>` : ''}
+            ${date2 ? `<p> Montagetijd : ${date2} ${from2 !== undefined ?` From:${from2} To:${to2}` : `` } </p>` : ''}
+            ${date3 ? `<p> Montagetijd : ${date3} ${from3 !== undefined ?` From:${from3} To:${to3}` : `` } </p>` : ''}
             ${bandenmerk ? `<p>Bandenmerk:${bandenmerk}</p>` : '' }
             ${tiresize ? `<div class="Bandemat" >Bandenmaat:<div>${tiresize}</div><div>${tiresize2}</div><div>${tiresize3}</div><div>${tiresize4}</div><div>${tiresize5}</div> </div>` : ''}
-             ${chooser == "velvebroken" ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `${chooser == "MEERDERE" ? " KIES INDIEN VAN TOEPASSING:MEERDERE LEKKE BANDEN" :`${chooser == "visiOrDroveFlat" ? " KIES INDIEN VAN TOEPASSING:Ventiel afgebroken" :'' }`}`}
+            ${chooser !== '' ?   `  ${chooser == "velvebroken" ? `KIES INDIEN VAN TOEPASSING:Ventiel afgebroken` : `${chooser == "MEERDERE" ? " KIES INDIEN VAN TOEPASSING:MEERDERE LEKKE BANDEN" :`${chooser == "visiOrDroveFlat" ? " KIES INDIEN VAN TOEPASSING:Ventiel afgebroken" :'' }`}`}` :``} 
+       
             
             ${lat ? `<p><a href=${locationurl} class="button">Location</a></p>` : ''}
             
